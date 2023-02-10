@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}"
+    <title></title>
+</head>
+<body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="nav-link active" href="/">Acceuil</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link "  href="/signup">Sing up</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<div class="container">
+	{% block content %}
+		<h2 class="text-center">SE CONNECTER</h2>
+		<form action="/login/" method="post">
+			<h4>E_mail:<input class="form-control" type="text" name="mail" id="mail" placeholder="Saisir votre Mail"></h4><br>
+			<h4>Password:<input class="form-control" type="password" name="pass" id="pass" placeholder="Saisir votre Mot de psse"></h4><br>
+            <button class="btn btn-primary" type="submit">Soumettre</button>
+			<button class="btn btn-primary" type="reset">Annuler</button>
+		</form>
+</div>
+          <div class="form-group ">
+        {% with messages = get_flashed_messages()  %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+      </div>
+    {% endblock %}
+
+</body>
+</html>

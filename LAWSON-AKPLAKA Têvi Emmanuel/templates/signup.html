@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}"
+    <title></title>
+</head>
+<body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="nav-link active" href="/">Acceuil</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+
+          <li class="nav-item">
+            <a class="nav-link" href="/login/">Log in</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<div class="container">
+	{% block content %}
+		<h2 class="text-center">S'INSCRIRE</h2>
+		<form method="post" action="/signup/">
+			<h4>Nom:<input class="form-control" type="text" name="nom" id="nom" placeholder="Saisir votre Nom"></h4>
+			<h4>Prénom:<input class="form-control" type="text" name="prenom" id="prenom" placeholder="Saisir votre Prénom"></h4>
+			<h4>Adresse mail:<input class="form-control" type="email" name="mail" id="mail" placeholder="Saisir votre Email"></h4>
+			<h4>Password:<input class="form-control" type="password" name="pass" id="pass" placeholder="Saisir votre Mot de psse"></h4>
+			<h4>Confirmation du password:<input type="password" name="cpass" id="cpass" placeholder="Confirmer votre Mot de passe" class="form-control"></h4><br>
+			<button class="btn btn-primary" type="submit">Soumettre</button>
+			<button class="btn btn-primary" type="reset">Annuler</button>
+		</form>
+	      <div class="form-group ">
+        {% with messages = get_flashed_messages()  %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+      </div>
+	{% endblock content %}
+</div>
+</body>
+</html>
